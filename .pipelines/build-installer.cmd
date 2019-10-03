@@ -14,3 +14,5 @@ cd x64
 dir
 cd Release
 dir
+
+7ZIP a -tzip PowerToysSetup.msi.zip PowerToysSetup.msi
