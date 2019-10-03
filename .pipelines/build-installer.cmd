@@ -1,17 +1,19 @@
 :SETUP
 cd /D "%~dp0"
-set EXPECTED_OUTPUT="PowerToysSetup/x64/Release"
+set EXPECTED_OUTPUT="PowerToysSetup\x64\Release"
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
 pushd
 
 :COPYSOURCE
 dir
-call robocopy ../installer/ %tmp%/infrabuild/ /s
+call robocopy ..\installer\ %tmp%\infrabuild\ /s
 if errorlevel 7 goto FAIL
 
-pushd %tmp%/infrabuild
+dir %tmp%
+pushd %tmp%\infrabuild
 
 :BUILD
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
+
 call msbuild PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
 :CHECKRESULTS
@@ -25,7 +27,7 @@ if not exist %EXPECTED_OUTPUT% (
 
 :COPYOUTPUT
 popd
-call robocopy %tmp%/infrabuild/PowerToysSetup/x64/ ./installer/PowerToysSetup/x64 /s
+call robocopy %tmp%\infrabuild\PowerToysSetup\x64\ .\installer\PowerToysSetup\x64 /s
 
 :NORMALFINISH
 ::errorlevel greater than 7 - is intentional. see
