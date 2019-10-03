@@ -6,7 +6,7 @@ environment:
   runtime:
     provider: 'appcontainer'
     image: 'cdpxwin.azurecr.io/user/powertoys/vs2019:3.0'
-    source_mode: 'link'
+    source_mode: 'map'
 
 version:
   name: 'PowerToys'
