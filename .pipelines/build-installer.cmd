@@ -1,8 +1,10 @@
 :SETUP
+cd /D "%~dp0"
 set EXPECTED_OUTPUT="PowerToysSetup/x64/Release"
 pushd
 
 :COPYSOURCE
+dir
 call robocopy ../installer/ %tmp%/infrabuild/ /s
 if errorlevel 7 goto FAIL
 
@@ -16,6 +18,7 @@ call msbuild PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit
 echo Expected Output: %EXPECTED_OUTPUT%
 
 if not exist %EXPECTED_OUTPUT% (
+  dir
   echo NO build output folder
   goto FAIL
 )
