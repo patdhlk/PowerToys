@@ -4,5 +4,13 @@ call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Too
 call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
 dir
-cd installer\PowerToysSetup\x64\Release
+cd ..
+dir
+cd installer
+dir
+cd PowerToysSetup
+dir
+cd x64
+dir
+cd Release
 dir
