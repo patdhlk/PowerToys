@@ -54,6 +54,6 @@ build:
         - from: 'installer\PowerToysSetup\x64\Release'
           to: 'Build_Installer_Output'
           include:
-            - '*.zip'
+            - 'PowerToysSetup.msi'
           signing_options:
             sign_inline: true  # This does signing a soon as this command completes
