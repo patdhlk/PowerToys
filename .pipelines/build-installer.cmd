@@ -2,52 +2,52 @@
 cd /D "%~dp0"
 set EXPECTED_OUTPUT="installer\PowerToysSetup\x64\Release"
 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
-REM pushd
+pushd
 
-REM :COPYSOURCE
-REM dir
-REM call robocopy ..\installer\ %tmp%\infrabuild\ /s
-REM call robocopy ..\x64 %tmp%\infrabuild /s
-REM if errorlevel 7 goto FAIL
+:COPYSOURCE
+dir
+call robocopy ..\installer\ %tmp%\infrabuild\ /s
+call robocopy ..\x64 %tmp%\infrabuild /s
+if errorlevel 7 goto FAIL
 
-REM dir %tmp%
-REM pushd %tmp%\infrabuild
+dir %tmp%
+pushd %tmp%\infrabuild
 
 :BUILD
 
 call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
-tasklist /V 
 
-REM :CHECKRESULTS
-REM echo Expected Output: %EXPECTED_OUTPUT%
 
-REM if not exist %EXPECTED_OUTPUT% (
-REM   dir
-REM   echo NO build output folder
-REM   goto FAIL
-REM )
+:CHECKRESULTS
+echo Expected Output: %EXPECTED_OUTPUT%
 
-REM :COPYOUTPUT
-REM popd
-REM call robocopy %tmp%\infrabuild\PowerToysSetup\x64\ .\installer\PowerToysSetup\x64 /s
+if not exist %EXPECTED_OUTPUT% (
+  dir
+  echo NO build output folder
+  goto FAIL
+)
 
-REM :NORMALFINISH
-REM ::errorlevel greater than 7 - is intentional. see
-REM :: https://blogs.technet.microsoft.com/deploymentguys/2008/06/16/robocopy-exit-codes/
-REM ::for more details
+:COPYOUTPUT
+popd
+call robocopy %tmp%\infrabuild\PowerToysSetup\x64\ .\installer\PowerToysSetup\x64 /s
 
-REM if errorlevel 7 goto FAIL
+:NORMALFINISH
+::errorlevel greater than 7 - is intentional. see
+:: https://blogs.technet.microsoft.com/deploymentguys/2008/06/16/robocopy-exit-codes/
+::for more details
 
-REM echo Build SUCCEEDED.
-REM set exit_code=0
+if errorlevel 7 goto FAIL
 
-REM goto END
+echo Build SUCCEEDED.
+set exit_code=0
 
-REM :FAIL
-REM echo Build FAILED.
-REM set exit_code=1
+goto END
 
-REM :END
-REM echo popd
-REM popd
+:FAIL
+echo Build FAILED.
+set exit_code=1
+
+:END
+echo popd
+popd
