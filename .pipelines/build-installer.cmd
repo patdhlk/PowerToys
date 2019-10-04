@@ -15,7 +15,7 @@ REM pushd %tmp%\infrabuild
 
 :BUILD
 
-call msbuild PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
 tasklist /V 
 
