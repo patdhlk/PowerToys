@@ -1,20 +1,10 @@
 cd /D "%~dp0"
 
-dir "C:\Program Files (x86)"
-dir "C:\Program Files (x86)\Microsoft Visual Studio"
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019"
-REM dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools"
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild"
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\16.0"
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\16.0\bin"
+dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0"
+dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\bin"
 
 
-REM dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
-
-
-
-REM set MSBUILD_EXE="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
+set MSBUILD_EXE="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
 
 
 

@@ -1,7 +1,8 @@
 :SETUP
 cd /D "%~dp0"
 set EXPECTED_OUTPUT="installer\PowerToysSetup\x64\Release"
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
+REM call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
+set MSBUILD_EXE="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
 REM pushd
 
 REM :COPYSOURCE
@@ -15,7 +16,7 @@ REM pushd %tmp%\infrabuild
 
 :BUILD
 
-call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+call %MSBUILD_EXE% ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
 cd ../installer/PowerToysSetup
 dir
