@@ -5,8 +5,8 @@ environment:
     version: '2016'
   runtime:
     provider: 'appcontainer'
-    image: 'cdpxwinrs5test.azurecr.io/global/vse2017/u9/vse2017u9-winltsc2019:latest'
-    # image: 'cdpxwin.azurecr.io/user/powertoys/vs2019:3.0'
+    # image: 'cdpxwinrs5test.azurecr.io/global/vse2017/u9/vse2017u9-winltsc2019:latest'
+    image: 'cdpxwin.azurecr.io/user/powertoys/vs2019:3.0'
     source_mode: 'map'
 
 version:

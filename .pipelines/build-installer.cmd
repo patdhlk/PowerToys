@@ -1,24 +1,26 @@
 :SETUP
 cd /D "%~dp0"
 set EXPECTED_OUTPUT="installer\PowerToysSetup\x64\Release"
-REM call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
-set MSBUILD_EXE="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
+REM set MSBUILD_EXE="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
 REM pushd
 
 REM :COPYSOURCE
 REM dir
-REM call robocopy ..\installer\ %tmp%\infrabuild\ /s
-REM call robocopy ..\x64 %tmp%\infrabuild /s
+call robocopy ..\installer %tmp%\infrabuild\placeholder\placeholder /s
+call robocopy ..\x64 %tmp%\infrabuild /s
 REM if errorlevel 7 goto FAIL
 
-REM dir %tmp%
+dir %tmp%
+dir %tmp%\infrabuild
 REM pushd %tmp%\infrabuild
 
 :BUILD
 
-call %MSBUILD_EXE% ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+REM call %MSBUILD_EXE% ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
-cd ../installer/PowerToysSetup
+cd %tmp%\infrabuild\installer\PowerToysSetup
 dir
 cd x64
 dir
