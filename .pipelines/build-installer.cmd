@@ -17,15 +17,13 @@ REM pushd %tmp%\infrabuild
 
 :BUILD
 
-REM call %MSBUILD_EXE% ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
-call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+REM call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
-cd %tmp%\infrabuild\installer\PowerToysSetup
-dir
-cd x64
-dir
-cd Release
-dir
+call msbuild %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+
+dir %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup
+dir %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup\x64
+dir %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup\x64\Release
 
 REM :CHECKRESULTS
 REM echo Expected Output: %EXPECTED_OUTPUT%
