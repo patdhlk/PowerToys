@@ -5,10 +5,11 @@ dir "C:\Program Files (x86)\Microsoft Visual Studio"
 dir "C:\Program Files (x86)\Microsoft Visual Studio\2019"
 REM dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
 dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools"
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\IDE"
+dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild"
+dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\16.0"
+dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\16.0\bin"
 
-echo closer
-dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Tools"
+
 REM dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
 
 
