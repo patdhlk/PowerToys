@@ -8,11 +8,14 @@ REM pushd
 REM :COPYSOURCE
 REM dir
 call robocopy ..\installer %tmp%\infrabuild\placeholder\placeholder /s
-call robocopy ..\x64 %tmp%\infrabuild /s
+call robocopy ..\x64 %tmp%\infrabuild\x64 /s
 REM if errorlevel 7 goto FAIL
 
 dir %tmp%
 dir %tmp%\infrabuild
+dir %tmp%\infrabuild\placeholder
+dir %tmp%\infrabuild\placeholder\placeholder
+dir %tmp%\infrabuild\x64
 REM pushd %tmp%\infrabuild
 
 :BUILD
