@@ -1,6 +1,6 @@
 :SETUP
 cd /D "%~dp0"
-set EXPECTED_OUTPUT="installer\PowerToysSetup\x64\Release"
+set EXPECTED_OUTPUT="%tmp%\infrabuild\installer\PowerToysSetup\x64\Release"
 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat -arch=amd64 -host_arch=amd64 -winsdk=10.0.16299.0"
 REM set MSBUILD_EXE="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
 REM pushd
@@ -37,9 +37,9 @@ if not exist %EXPECTED_OUTPUT% (
   goto FAIL
 )
 
-REM :COPYOUTPUT
+:COPYOUTPUT
 REM popd
-REM call robocopy %tmp%\infrabuild\PowerToysSetup\x64\ .\installer\PowerToysSetup\x64 /s
+call robocopy %tmp%\infrabuild\installer\PowerToysSetup\x64 ..\installer\PowerToysSetup\x64 /s
 
 :NORMALFINISH
 REM ::errorlevel greater than 7 - is intentional. see
