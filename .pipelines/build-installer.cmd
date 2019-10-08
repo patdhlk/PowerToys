@@ -9,7 +9,7 @@ REM :COPYSOURCE
 REM dir
 call robocopy ..\installer %tmp%\infrabuild\installer /s
 call robocopy ..\x64 %tmp%\infrabuild\x64 /s
-call robocopy ..\License.rtf %tmp%\infrabuild
+call robocopy .. %tmp%\infrabuild License.rtf
 REM if errorlevel 7 goto FAIL
 
 dir %tmp%
