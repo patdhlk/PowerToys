@@ -9,6 +9,7 @@ REM :COPYSOURCE
 REM dir
 call robocopy ..\installer %tmp%\infrabuild\installer /s
 call robocopy ..\x64 %tmp%\infrabuild\x64 /s
+call robocopy ..\License.rtf %tmp%\infrabuild
 REM if errorlevel 7 goto FAIL
 
 dir %tmp%
@@ -26,35 +27,35 @@ dir %tmp%\infrabuild\installer\PowerToysSetup
 dir %tmp%\infrabuild\installer\PowerToysSetup\x64
 dir %tmp%\infrabuild\installer\PowerToysSetup\x64\Release
 
-REM :CHECKRESULTS
-REM echo Expected Output: %EXPECTED_OUTPUT%
+:CHECKRESULTS
+echo Expected Output: %EXPECTED_OUTPUT%
 
-REM if not exist %EXPECTED_OUTPUT% (
-REM   dir
-REM   echo NO build output folder
-REM   goto FAIL
-REM )
+if not exist %EXPECTED_OUTPUT% (
+  dir
+  echo NO build output folder
+  goto FAIL
+)
 
 REM :COPYOUTPUT
 REM popd
 REM call robocopy %tmp%\infrabuild\PowerToysSetup\x64\ .\installer\PowerToysSetup\x64 /s
 
-REM :NORMALFINISH
+:NORMALFINISH
 REM ::errorlevel greater than 7 - is intentional. see
 REM :: https://blogs.technet.microsoft.com/deploymentguys/2008/06/16/robocopy-exit-codes/
 REM ::for more details
 
-REM if errorlevel 7 goto FAIL
+if errorlevel 7 goto FAIL
 
-REM echo Build SUCCEEDED.
-REM set exit_code=0
+echo Build SUCCEEDED.
+set exit_code=0
 
-REM goto END
+goto END
 
-REM :FAIL
-REM echo Build FAILED.
-REM set exit_code=1
+:FAIL
+echo Build FAILED.
+set exit_code=1
 
-REM :END
-REM echo popd
-REM popd
+:END
+echo popd
+popd
