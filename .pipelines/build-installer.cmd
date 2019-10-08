@@ -7,7 +7,7 @@ REM pushd
 
 REM :COPYSOURCE
 REM dir
-call robocopy ..\installer %tmp%\infrabuild\placeholder\placeholder\installer /s
+call robocopy ..\installer %tmp%\infrabuild\placeholder\installer /s
 call robocopy ..\x64 %tmp%\infrabuild\x64 /s
 REM if errorlevel 7 goto FAIL
 
@@ -22,11 +22,11 @@ REM pushd %tmp%\infrabuild
 
 REM call msbuild ../installer/PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
-call msbuild %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
+call msbuild %tmp%\infrabuild\placeholder\installer\PowerToysSetup.sln /p:Configuration=Release /p:Platform=x64 || exit /b 1
 
-dir %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup
-dir %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup\x64
-dir %tmp%\infrabuild\placeholder\placeholder\installer\PowerToysSetup\x64\Release
+dir %tmp%\infrabuild\placeholder\installer\PowerToysSetup
+dir %tmp%\infrabuild\placeholder\installer\PowerToysSetup\x64
+dir %tmp%\infrabuild\placeholder\installer\PowerToysSetup\x64\Release
 
 REM :CHECKRESULTS
 REM echo Expected Output: %EXPECTED_OUTPUT%
