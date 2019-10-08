@@ -1,0 +1,27 @@
+build:
+  commands:
+    - !!buildcommand
+      name: 'Build Power Toys'
+      command: '.pipelines\build.cmd'
+      artifacts:
+        - from: 'x64/Release'
+          to: 'Build_Output'
+          include:
+          - 'PowerToys.exe'
+          - 'PowerToysSettings.exe'
+          - 'modules\FancyZonesEditor.exe'
+          - 'modules\fancyzones.dll'
+          - 'modules\shortcut_guide.dll'
+          signing_options:
+            sign_inline: true  # This does signing a soon as this command completes
+
+    - !!buildcommand
+      name: 'Build Power Toys Installer'
+      command: '.pipelines\build-installer.cmd'
+      artifacts:
+        - from: 'installer\PowerToysSetup\x64\Release'
+          to: 'Build_Installer_Output'
+          include:
+            - 'PowerToysSetup.msi'
+          signing_options:
+            sign_inline: true  # This does signing a soon as this command completes

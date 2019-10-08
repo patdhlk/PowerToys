@@ -45,8 +45,6 @@ build:
           - 'modules\FancyZonesEditor.exe'
           - 'modules\fancyzones.dll'
           - 'modules\shortcut_guide.dll'
-          signing_options:
-            sign_inline: true  # This does signing a soon as this command completes
 
     - !!buildcommand
       name: 'Build Power Toys Installer'
@@ -56,5 +54,3 @@ build:
           to: 'Build_Installer_Output'
           include:
             - 'PowerToysSetup.msi'
-          signing_options:
-            sign_inline: true  # This does signing a soon as this command completes
