@@ -10,6 +10,7 @@ REM dir
 call robocopy ..\installer %tmp%\infrabuild\installer /s
 call robocopy ..\x64 %tmp%\infrabuild\x64 /s
 call robocopy .. %tmp%\infrabuild License.rtf
+call robocopy ../src %tmp%\infrabuild\src /s
 REM if errorlevel 7 goto FAIL
 
 dir %tmp%
