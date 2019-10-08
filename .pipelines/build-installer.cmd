@@ -7,7 +7,7 @@ REM pushd
 
 REM :COPYSOURCE
 REM dir
-call robocopy ..\installer %tmp%\infrabuild\placeholder\placeholder /s
+call robocopy ..\installer %tmp%\infrabuild\placeholder\placeholder\installer /s
 call robocopy ..\x64 %tmp%\infrabuild\x64 /s
 REM if errorlevel 7 goto FAIL
 
